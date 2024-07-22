@@ -4,10 +4,10 @@ services:
     env: node
     plan: free
     buildCommand: 'cd server && npm install'
-    startCommand: 'node server/index.js'
+    startCommand: 'npm start'
     envVars:
       - key: MONGO_URI
-        value: <votre_uri_mongodb>
+        value: mongodb+srv://todo-user1:mdpuser1@cluster0.pth9bwu.mongodb.net/ToDo?retryWrites=true&w=majority&appName=Cluster0
       - key: PORT
         value: 5000
 
