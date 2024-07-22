@@ -19,4 +19,4 @@ services:
     startCommand: 'npm run preview'
     envVars:
       - key: VITE_API_URL
-        value: <url_backend_deploye>
+        value: https://todo-list-app-deploy.onrender.com
