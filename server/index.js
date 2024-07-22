@@ -1,16 +1,19 @@
-const express = require('express'); // eslint-disable-line 
-const mongoose = require('mongoose'); // eslint-disable-line 
-const cors = require('cors'); // eslint-disable-line 
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://todo-user1:mdpuser1@cluster0.pth9bwu.mongodb.net/ToDo?retryWrites=true&w=majority&appName=Cluster0');
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Définir le schéma et le modèle
 const TaskSchema = new mongoose.Schema({
@@ -18,6 +21,7 @@ const TaskSchema = new mongoose.Schema({
   completed: Boolean,
 });
 
+// Spécifiez explicitement le nom de la collection comme troisième argument
 const Task = mongoose.model('Task', TaskSchema, 'Tasks');
 
 // Routes
